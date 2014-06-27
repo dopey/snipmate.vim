@@ -1,24 +1,35 @@
 # Prototype
 snippet proto
-	${1:class_name}.prototype.${2:method_name} =
-	function(${3:first_argument}) {
-		${4:// body...}
-	};
+	${1:class_name}.prototype.${2:method_name} = function $1__$2() {
+		${3:// body...}
+	}
+# Static
+snippet static
+	${1:class_name}.${2:method_name} = function $1_$2() {
+		${3:// body...}
+	}
+# Var Function
+snippet vfun
+	var ${1:function_name} = function $1() {
+		${2:// body...}
+	}
 # Function
 snippet fun
-	function ${1:function_name} (${2:argument}) {
+	function ${1:function_name}(${2:argument}) {
 		${3:// body...}
 	}
 # Anonymous Function
 snippet f
-	function(${1}) {${2}};
+	function(${1}) {${2}}
 # if
 snippet if
-	if (${1:true}) {${2}}
+	if (${1:true}) {
+		${2://body ..}
+	}
 # if ... else
 snippet ife
 	if (${1:true}) {${2}}
-	else{${3}}
+	else{${3}};
 # tertiary conditional
 snippet t
 	${1:/* condition */} ? ${2:a} : ${3:b}
@@ -40,9 +51,12 @@ snippet case
 	${3}
 # for (...) {...}
 snippet for
-	for (var ${2:i} = 0; $2 < ${1:Things}.length; $2${3:++}) {
-		${4:$1[$2]}
-	};
+	for (var ${1:i} = 0, $1$1 = ${2:Things}.length; $1 < $1$1; $1++) {
+		${3://body ..}
+	}
+#should.be.eql
+snippet sbe
+	should.be.eql(${1})
 # for (...) {...} (Improved Native For-Loop)
 snippet forr
 	for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2${3:--}) {
@@ -72,3 +86,37 @@ snippet get
 # Get Element
 snippet gett
 	getElementBy${1:Id}('${2}')${3}
+############### For Testing
+# Describe
+snippet describe
+	describe('${1}', function() {
+		${2}
+	})
+snippet before
+	beforeEach(function(done) {
+		${1}
+		done()
+	})
+snippet it
+	it('${1}', function() {
+		${2}
+	})
+# console.log(..)
+snippet log
+	console.log(${1})
+# promise then
+snippet then
+	then(function(${1}) {
+		${2:// body...}
+	})
+# promise fail
+snippet fail
+	fail(function(${1}) {
+		${2:// body...}
+	})
+snippet try
+	try {
+		${1:// body...}
+	} catch(error) {
+		${2:// body...}
+	}
